@@ -7,7 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddDbContext<autoresContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("bibliotecaDbConnection")));
+builder.Services.AddDbContext<autoresContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("autoresContext")));
+
+builder.Services.AddDbContext<librosContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("bibliotecaDbConnection")));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
